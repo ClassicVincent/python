@@ -1,0 +1,171 @@
+{% extends 'common/base.html' %}
+
+{% block css %}
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+    function search() {
+        var form = document.getElementById("searchForm")
+        form.submit()
+    }
+</script>
+{% endblock %}
+
+{% block style %}
+<style>
+    body {
+        background: url("{{ url_for('static', filename='image/bg1.jpg') }}");
+        background-position: center 0;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+    h1, h6, p, a, h3 {
+        font-style: italic;
+        color: white;
+        font-weight: bold;
+    }
+
+    .panel a {
+        font-style: italic;
+        color: black;
+        font-weight: bold;
+    }
+
+    .panel-body h6 {
+        font-style: italic;
+        color: black;
+        font-weight: bold;
+    }
+
+    .panel-group {
+        margin-bottom: auto;
+    }
+
+    .panel-inline {
+        padding: .5em;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    {% include 'common/header.html' %}
+    <!--<div class="row">-->
+        <!--<div class="row clearfix">-->
+            <!--<div class="col-sm-12 column">-->
+                <!--<ul class="nav nav-pills">-->
+                    <!--<li><a href="#movie" data-toggle="tab">Movie</a></li>-->
+                    <!--<li><a href="#novel" data-toggle="tab">Novel</a></li>-->
+                    <!--<li><a href="#blog" data-toggle="tab">Blog</a></li>-->
+                    <!--<li class="dropdown pull-right">-->
+                        <!--<a href="#" data-toggle="dropdown" class="dropdown-toggle"><span><i-->
+                                <!--class="fa fa-user-circle-o"></i></span>{{ username }}</a>-->
+                        <!--<ul class="dropdown-menu">-->
+                            <!--<li><a href="/login">logout</a></li>-->
+                        <!--</ul>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="row">
+        <div class="tab-content">
+            <div class="tab-pane active" id="movie">
+                <div class="row">
+                    <div class="col-sm-12 col-xs-12">
+                        <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+                            <h3 style="text-align: center;">search</h3>
+                            <form action="index" role="form" id="searchForm" method="POST">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="search_content" name="searchContent">
+                                    <span class="input-group-addon"><i
+                                            class="glyphicon glyphicon-search" onclick="search()"></i></span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h5 class="pannel-title">电影天堂</h5>
+                            </div>
+                            {% for movie_info in DYTT_LATEST %}
+                            <div class="panel-body panel-inline">
+                                <div class="panel-group" id="panel_tt_{{ loop.index }}">
+                                    <div class="pannel panel-success">
+                                        <div class="panel-heading">
+                                            <h6 class="pannel-title">
+                                                <a data-toggle="collapse"
+                                                   data-parent="#panel_tt_{{ loop.index }}"
+                                                   href="#tt_{{ loop.index }}">
+                                                    {{ movie_info.nameTag }}
+                                                </a>
+                                            </h6>
+                                        </div>
+                                        <div id="tt_{{ loop.index }}" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <a href="#">{{ movie_info.downloadUrl }}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h5 class="pannel-title">66影视（右键复制下载地址)</h5>
+                            </div>
+                            {% for movie_info in YS66_LATEST %}
+                            <div class="panel-body panel-inline">
+                                <div class="panel-group" id="panel_66_{{ loop.index }}">
+                                    <div class="pannel panel-success">
+                                        <div class="panel-heading">
+                                            <h6 class="pannel-title">
+                                                <a data-toggle="collapse"
+                                                   data-parent="#panel_66_{{ loop.index }}"
+                                                   href="#66_{{ loop.index }}">
+                                                    {{ movie_info.name }}
+                                                </a>
+                                            </h6>
+                                        </div>
+                                        <div id="66_{{ loop.index }}" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <!--<a href="#">电影的下载链接</a>-->
+                                                {% for nameTag in movie_info.nameTag %}
+                                                <h6><a href="{{ nameTag[1] }}">{{ nameTag[0] }}</a></h6>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="novel">
+                <div class="row">
+                    <div class="col-sm-12">小说</div>
+                </div>
+            </div>
+            <div class="tab-pane" id="blog">
+                <div class="row">
+                    博客
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% include 'common/footer.html' %}
+{% endblock %}

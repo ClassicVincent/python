@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="e00b67c0-6198-476a-9720-220a649aaa08" name="vincent.tencent" url="http://49.235.91.151">
+        <fileTransfer host="49.235.91.151" port="6013" rootFolder="/home/vincent/python" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="6013" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

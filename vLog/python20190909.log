@@ -1,0 +1,13 @@
+2019-09-09 10:30:00,194 - test - INFO - hello
+2019-09-09 10:31:31,792 - ONLYONE - INFO - 每日一句结果:[{'name': 'ONEWORD', 'value': '2019.09.05 星期四人生就像一盒巧克力，你永远不知道下一块会是什么味道。'}]
+2019-09-09 10:31:31,792 - ONLYONE - INFO - 2019.09.05 星期四人生就像一盒巧克力，你永远不知道下一块会是什么味道。
+2019-09-09 10:31:31,793 - ONLYONE - INFO - 每日一句数据库日期:[2019.09.05]
+2019-09-09 10:33:39,847 - ONLYONE - INFO - E:\vincent\git\python\vFlask\onlyone
+2019-09-09 10:34:01,071 - ONLYONE - INFO - E:\vincent\git\python\vFlask\onlyone
+2019-09-09 10:34:01,072 - ONLYONE - INFO - bg.png
+2019-09-09 10:40:45,120 - ONLYONE - INFO - E:\vincent\git\python\vFlask\onlyone\static
+2019-09-09 10:40:45,121 - ONLYONE - INFO - bg.jpg
+2019-09-09 10:40:59,643 - ONLYONE - INFO - E:\vincent\git\python\vFlask\onlyone\static
+2019-09-09 10:40:59,644 - ONLYONE - INFO - bg.jpg
+2019-09-09 10:41:17,177 - ONLYONE - INFO - E:\vincent\git\python\vFlask\onlyone\static
+2019-09-09 10:41:17,178 - ONLYONE - INFO - one.jpg

@@ -1,0 +1,12 @@
+2019-10-18 09:25:30,325 - mysql - INFO - Êý¾Ý¿â°æ±¾:5.7.17-log
+2019-10-18 09:25:30,341 - mysql - INFO - <class 'pymysql.connections.Connection'>
+2019-10-18 09:25:30,349 - mysql - INFO - Ö´ÐÐSQLÓï¾ä(select * from vincent_user)Ê§°Ü!
+2019-10-18 09:25:30,350 - mysql - INFO - (1146, "Table 'vincent.vincent_user' doesn't exist")
+2019-10-18 09:25:30,351 - mysql - INFO - ²éÑ¯Êý¾Ý¿âÓï¾äÊ§°Ü
+2019-10-18 09:25:30,351 - mysql - INFO - <class 'pymysql.connections.Connection'>
+2019-10-18 09:25:30,356 - mysql - INFO - Ö´ÐÐSQLÓï¾ä(select * from vincent_user where user_name = '')Ê§°Ü!
+2019-10-18 09:25:30,357 - mysql - INFO - (1146, "Table 'vincent.vincent_user' doesn't exist")
+2019-10-18 09:25:30,357 - mysql - INFO - ²éÑ¯½á¹û:[]
+2019-10-18 09:28:35,052 - mysql - INFO - <class 'pymysql.connections.Connection'>
+2019-10-18 09:28:35,055 - mysql - INFO - Ö´ÐÐSQLÓï¾ä(select count(*) from spider_one where spider_index = 'MAIN' and spider_date = '2019-10-18')Ê§°Ü!
+2019-10-18 09:28:35,056 - mysql - INFO - (1146, "Table 'vincent.spider_one' doesn't exist")

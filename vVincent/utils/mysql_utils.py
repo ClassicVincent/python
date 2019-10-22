@@ -1,0 +1,148 @@
+# -*- coding:utf-8 -*-
+"""
+@date   : 2019/8/12
+@file   : mysqlUtils.py
+@author : Vincent
+@note   :
+"""
+
+import pymysql
+
+class mysql:
+	def __init__(self, config):
+		self.host = config['host']
+		self.user = config['user']
+		self.passwd = config['passwd']
+#		self.port = config['port']
+		self.connect = None
+		self.cursor = None
+
+		try:
+			self.connect = pymysql.connect(**config)
+			self.connect.autocommit(1)
+			# 所有的查询,都在连接con的一个模块cursor上面运行的
+			self.cursor = self.connect.cursor()
+		except pymysql.Error as e:
+			print("连接数据库失败,请检查数据库参数配置!", e.args[0], e.args[1])
+
+	def close(self):
+		'''
+		关闭数据库
+		'''
+		if None != self.connect:
+			self.connect.close()
+		else:
+			print("关闭数据库失败:数据库未连接")	
+
+	def getVersion(self):
+		'''
+		获取数据库版本号
+		'''
+		self.cursor.execute("select version()")
+		version = self.getOneData()[0]
+#		version = self.getOneData()
+		return version
+
+	def getOneData(self):
+		'''
+		取得上个查询的单个结果
+		'''
+		data = self.cursor.fetchone()
+		return data
+
+	def selectDatabase(self, db):
+		'''
+		选择数据库
+		'''
+		self.connect.select_db(db)
+
+	def executeSql(self, sql=''):
+		'''
+		执行SQL语句
+		'''
+		try:
+			self.cursor.execute(sql)
+			records = self.cursor.fetchall()
+			return records
+		except pymysql.Error as e:
+			error = "执行SQL语句(%s)失败!\n(%s):(%s)" % (sql, e.args[0], e.args[1])
+			print(error)
+
+	def selectSql(self, sql=''):
+		'''
+		执行查询语句,并返回字典数组
+		'''
+		result_array = []
+		try:
+			self.cursor.execute(sql)
+			records = self.cursor.fetchall()
+			descriptions = self.cursor.description
+			
+			for i in range(len(records)):
+				single_record_dict = {}
+				for j in range(len(descriptions)):
+					single_record_dict[descriptions[j][0]] = records[i][j]	
+				result_array.append(single_record_dict)
+
+		except pymysql.Error as e:
+			error = "执行SQL语句(%s)失败!\n(%s):(%s)" % (sql, e.args[0], e.args[1])
+			print(error)
+
+		return result_array
+
+	def executeSqlFile(self, filename=''):
+		'''
+		执行SQL文件
+		'''
+		try:
+			fp = open(filename, "r")
+			content = fp.read()
+			fp.close()
+			for sql in content.split(';'):
+				if 0 != len(sql.strip()):
+					self.cursor.execute(sql)
+		except pymysql.Error as e:
+			error = "执行SQL语句(%s)失败!\n(%s):(%s)" % (sql, e.args[0], e.args[1])
+			print(error)
+		except BaseException as e:
+			error = "打开文件[%s]失败!\n(%s):(%s)" % (filename, e.args[0], e.args[1])
+			print(error)
+
+	
+	def commitSql(self, sql=''):
+		'''
+		执行SQL并提交
+		'''
+		error = ''
+		try:
+			self.cursor.execute(sql)
+			self.connect.commit()
+		except pymysql.Error as e:
+			self.connect.rollback()
+			error = "执行SQL语句(%s)失败!\n(%s):(%s)" % (sql, e.args[0], e.args[1])
+			print(error)
+		return error
+
+if __name__ == "__main__":
+	config = {}
+	config['host'] = 'localhost'
+	config['user'] = 'vincent'
+	config['passwd'] = 'chenwenqiang'
+	config['db'] = 'vincent'
+	config['charset'] = 'utf8'
+	
+	mysql = mysql(config)
+	print("数据库版本:", mysql.getVersion())
+	result = mysql.executeSql("select * from vincent_user")
+	if 0 != len(result):
+		print("查询结果:", result)
+		print("查询结果:", result[0])
+		print("查询结果:", result[0][0])
+
+	result = mysql.selectSql("select * from vincent_user where user_name = ''")
+	print("查询结果:", result)
+	
+#	mysql.executeSqlFile("a.sql")
+	mysql.close()
+	
+

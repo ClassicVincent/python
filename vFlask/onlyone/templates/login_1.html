@@ -1,0 +1,87 @@
+{% extends 'common/base.html' %}
+{% block js %}
+    <script src="{{ url_for('static', filename='js/md5.js') }}"></script>
+{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block style %}
+    <style>
+        body {
+            background: url("{{ url_for('static', filename='image/bg1.jpg') }}");
+            background-position: center 0;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        .main{
+            border: .2em solid white;
+            border-radius: 1em;
+            padding-top: 3em;
+            padding-bottom: 3em;
+        }
+        h3, a, p {
+            font-style: italic;
+            color: white;
+        }
+        h3{
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        {% include 'common/header.html' %}
+        <div class="main">
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <div class="col-sm-6 col-xs-12" style="padding:5%;">
+                        <h3>SIGN IN HERE</h3>
+                        <form class="form-horizontal" rol="form" action="login" method="POST" onsubmit="encryptPSWD()">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="text" class="form-control" name="username" id="username"
+                                           placeholder="Username">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                    <input type="password" class="form-control" name="password" id="password"
+                                           placeholder="Password">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" name="login" class="btn btn-danger btn-block">LOGIN</button>
+                            </div>
+                            <p class="error">{{ if_success }}{{ errormsg }}</p>
+                            <a href="#"><p>Forget Password</p></a>
+                            <!--<br>-->
+                            <a href="/register"><p>Register Now</p></a>
+                            <hr>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <img class="img-responsive" alt="" src="{{ url_for('static', filename="image/one.jpg") }}">
+                        <hr>
+                        <p>{{ oneLine }}</p>
+                        <p>{{ dateNow }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'common/footer.html' %}
+    <script language="javascript">
+        function encryptPSWD() {
+            var pswd = document.getElementById("password").value;
+            var en_pswd = $.md5(pswd);
+            document.getElementById("password").value = en_pswd;
+            console.info(en_pswd);
+            return true;
+        }
+    </script>
+{% endblock %}

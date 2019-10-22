@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+<<<<<<< HEAD
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/vLog/python20190904.log" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/vLog/python20190905.log" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/vLog/python20190909.log" charset="GBK" />
+    <file url="PROJECT" charset="UTF-8" />
+=======
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/vFlask/vincent/spiders/logs/20190914/__main__.log" charset="GBK" />
+>>>>>>> c9ce6cd48d1032277eab396f4eb646217857d863
+  </component>
+</project>

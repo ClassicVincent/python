@@ -1,0 +1,15 @@
+2019-10-17 14:41:49,706 - mysql - INFO - 数据库版本:5.7.17-log
+2019-10-17 14:41:49,708 - mysql - INFO - <class 'pymysql.connections.Connection'>
+2019-10-17 14:41:49,715 - mysql - INFO - 执行SQL语句(select * from vincent_user)失败!
+2019-10-17 14:41:49,716 - mysql - INFO - 查询数据库语句失败
+2019-10-17 14:41:49,716 - mysql - INFO - <class 'pymysql.connections.Connection'>
+2019-10-17 14:41:49,718 - mysql - INFO - 执行SQL语句(select * from vincent_user where user_name = '')失败!
+2019-10-17 14:41:49,718 - mysql - INFO - 查询结果:[]
+2019-10-17 14:43:22,037 - mysql - INFO - 数据库版本:5.7.17-log
+2019-10-17 14:43:22,048 - mysql - INFO - <class 'pymysql.connections.Connection'>
+2019-10-17 14:43:22,050 - mysql - INFO - 执行SQL语句(select * from vincent_user)失败!
+2019-10-17 14:43:22,051 - mysql - INFO - 查询数据库语句失败
+2019-10-17 14:43:22,051 - mysql - INFO - <class 'pymysql.connections.Connection'>
+2019-10-17 14:43:22,053 - mysql - INFO - 执行SQL语句(select * from vincent_user where user_name = '')失败!
+2019-10-17 14:43:22,053 - mysql - INFO - (1146, "Table 'vincent.vincent_user' doesn't exist")
+2019-10-17 14:43:22,054 - mysql - INFO - 查询结果:[]

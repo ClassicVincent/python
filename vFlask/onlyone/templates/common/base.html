@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <!--<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />-->
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <meta name="author" content="Vincent">
+
+    <!-- Bootstrap CSS File -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-3.3.7-dist/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-3.3.7-dist/css/bootstrap-theme.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome-4.7.0/css/font-awesome.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/onlyone.css') }}">
+
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='image/vimeo.png') }}">
+
+    <!-- JavaScript Libraries -->
+    <script src="{{ url_for('static', filename='bootstrap-3.3.7-dist/js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap-3.3.7-dist/js/bootstrap.js') }}"></script>
+
+    <style>
+        .footer {
+            position: absolute;
+            text-align: center;
+            color: gold;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        .navbar-default {
+            background: transparent;
+            border: none;
+            box-shadow: 0px 2px 8px rgba(50, 50, 50, 0.25)
+        }
+
+        .navbar-default .navbar-brand,
+        .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+            font-size: 3em;
+            font-weight: bold;
+            font-style: italic;
+            color: gold;
+        }
+
+        .navbar-default .navbar-nav > li > a,
+        .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+            font-size: 1.5em;
+{#            font-weight: bold;#}
+            font-style: italic;
+            color: gold;
+        }
+
+        .navbar-default .navbar-toggle,
+        .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus{
+            background: gold;
+            border-color: gold;
+        }
+
+    </style>
+
+    {% block js %}
+    {% endblock %}
+
+    {% block css %}
+    {% endblock %}
+
+    {% block style %}
+    {% endblock %}
+
+    {% if title %}
+        <title>{{ title }}</title>
+    {% else %}
+        <title>vincent</title>
+    {% endif %}
+</head>
+{% block body %}
+{% endblock %}
+</html>
+
